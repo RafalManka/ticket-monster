@@ -32,6 +32,12 @@ public class Event implements Serializable
    @Size(min = 20, max = 1000)
    private String description;
 
+   @Column
+   private boolean major;
+
+   @Column
+   private String picture;
+
    public Long getId()
    {
       return this.id;
@@ -103,6 +109,26 @@ public class Event implements Serializable
       this.description = description;
    }
 
+   public boolean isMajor()
+   {
+      return major;
+   }
+
+   public void setMajor(boolean major)
+   {
+      this.major = major;
+   }
+
+   public String getPicture()
+   {
+      return picture;
+   }
+
+   public void setPicture(String picture)
+   {
+      this.picture = picture;
+   }
+
    @Override
    public String toString()
    {
@@ -114,6 +140,9 @@ public class Event implements Serializable
          result += ", name: " + name;
       if (description != null && !description.trim().isEmpty())
          result += ", description: " + description;
+      result += ", major: " + major;
+      if (picture != null && !picture.trim().isEmpty())
+         result += ", picture: " + picture;
       return result;
    }
 }
