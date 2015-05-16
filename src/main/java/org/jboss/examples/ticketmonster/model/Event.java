@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Column;
 import javax.persistence.Version;
 import java.lang.Override;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Event implements Serializable
@@ -22,7 +24,13 @@ public class Event implements Serializable
    private int version;
 
    @Column
+   @NotNull
+   @Size(min = 5, max = 50)
    private String name;
+
+   @Column
+   @Size(min = 20, max = 1000)
+   private String description;
 
    public Long getId()
    {
@@ -85,6 +93,16 @@ public class Event implements Serializable
       this.name = name;
    }
 
+   public String getDescription()
+   {
+      return description;
+   }
+
+   public void setDescription(String description)
+   {
+      this.description = description;
+   }
+
    @Override
    public String toString()
    {
@@ -94,6 +112,8 @@ public class Event implements Serializable
       result += ", version: " + version;
       if (name != null && !name.trim().isEmpty())
          result += ", name: " + name;
+      if (description != null && !description.trim().isEmpty())
+         result += ", description: " + description;
       return result;
    }
 }

@@ -23,7 +23,6 @@ atlassian-ide-plugin.xml
 .project
 .settings
 .metadata
-bin
 .nbattrs
 *.log
 .clover
@@ -32,3 +31,5 @@ _site
 _tmp
 classes
 .forge_settings
+.settings/*
+!.settings/.jsdtscope
